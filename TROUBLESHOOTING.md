@@ -139,17 +139,17 @@ Server-side error.
 **Fix:**
 1. Check your internet connection
 2. Verify endpoint URL is correct
-3. Try the health endpoint: `curl https://us-central1-fourmonth-73efe.cloudfunctions.net/api/health`
+3. Try the health endpoint: `curl https://assaychain.com/api/health`
 4. If health endpoint works but other endpoints don't, file an issue
 
 ### DNS resolution failed
 
-**Cause:** Can't resolve `assaychain.com` (vanity host).
+**Cause:** Can't resolve `assaychain.com`.
 
 **Fix:**
-1. Fall back to the canonical Cloud Functions URL: `https://us-central1-fourmonth-73efe.cloudfunctions.net/api`
-2. Try a different DNS server (e.g. 1.1.1.1, 8.8.8.8)
-3. Flush your local DNS cache
+1. Try a different DNS server (e.g. 1.1.1.1, 8.8.8.8)
+2. Flush your local DNS cache
+3. Confirm `assaychain.com` resolves from another network
 
 ### SSL/TLS certificate error
 
@@ -253,8 +253,8 @@ pip install requests
 ### "Connection refused" (Claude Desktop)
 
 **Fix:**
-1. Verify the MCP URL is correct: `https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp`
-2. Test manually: `curl https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp` (should error with JSON-RPC error, not connection refused)
+1. Verify the MCP URL is correct: `https://assaychain.com/api/mcp`
+2. Test manually: `curl https://assaychain.com/api/mcp` (should error with JSON-RPC error, not connection refused)
 3. Restart Claude Desktop
 4. Check config file syntax (JSON must be valid)
 
@@ -264,7 +264,7 @@ pip install requests
 1. Restart Claude Desktop — `mcp-remote` is launched on app start
 2. Verify the MCP endpoint responds:
    ```bash
-   curl -X POST https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp \
+   curl -X POST https://assaychain.com/api/mcp \
      -H "Content-Type: application/json" \
      -H "Accept: application/json, text/event-stream" \
      -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
@@ -313,7 +313,7 @@ pip install requests
 
 1. **Forgetting the `/api` prefix**
    - Wrong: `https://assaychain.com/benchmark/copper`
-   - Right: `https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper`
+   - Right: `https://assaychain.com/api/benchmark/copper`
 
 2. **Wrong commodity name**
    - Wrong: `cuprum`, `cu`, `copper_ore`

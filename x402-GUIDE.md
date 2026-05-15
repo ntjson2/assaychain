@@ -120,7 +120,7 @@ const account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY);
 const fetchPaid = wrapFetchWithPayment(fetch, account);
 
 const res = await fetchPaid(
-  'https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper'
+  'https://assaychain.com/api/benchmark/copper'
 );
 const json = await res.json();
 ```

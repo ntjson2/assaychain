@@ -11,13 +11,13 @@ All languages — no API key needed.
 ### cURL
 
 ```bash
-curl https://us-central1-fourmonth-73efe.cloudfunctions.net/api/health
+curl https://assaychain.com/api/health
 ```
 
 ### JavaScript (Node.js)
 
 ```javascript
-const response = await fetch('https://us-central1-fourmonth-73efe.cloudfunctions.net/api/health');
+const response = await fetch('https://assaychain.com/api/health');
 const data = await response.json();
 console.log(data);
 ```
@@ -27,7 +27,7 @@ console.log(data);
 ```python
 import requests
 
-response = requests.get('https://us-central1-fourmonth-73efe.cloudfunctions.net/api/health')
+response = requests.get('https://assaychain.com/api/health')
 data = response.json()
 print(data)
 ```
@@ -41,7 +41,7 @@ This will return `402 Payment Required`.
 ### cURL
 
 ```bash
-curl -i https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper
+curl -i https://assaychain.com/api/benchmark/copper
 ```
 
 ### 402 envelope (no payment)
@@ -57,7 +57,7 @@ HTTP/2 402
     "maxAmountRequired": "100000",
     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b3566dA4ef5",
     "payTo": "0x750977976Ab85A4Ce5AAbb2e1a9fc80a633f2769",
-    "resource": "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper",
+    "resource": "https://assaychain.com/api/benchmark/copper",
     "maxTimeoutSeconds": 60
   }],
   "x402Version": 1
@@ -67,7 +67,7 @@ HTTP/2 402
 ### JavaScript
 
 ```javascript
-const response = await fetch('https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper');
+const response = await fetch('https://assaychain.com/api/benchmark/copper');
 console.log(response.status); // 402
 
 const data = await response.json();
@@ -79,7 +79,7 @@ console.log(data);
 ```python
 import requests
 
-response = requests.get('https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper')
+response = requests.get('https://assaychain.com/api/benchmark/copper')
 print(response.status_code)  # 402
 
 data = response.json()
@@ -104,7 +104,7 @@ Add to your Claude Desktop config:
       "args": [
         "-y",
         "mcp-remote",
-        "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp"
+        "https://assaychain.com/api/mcp"
       ]
     }
   }
@@ -128,13 +128,13 @@ Note: MCP cannot carry the x402 `X-PAYMENT` header. For paid tools, settle the p
 
 ```bash
 # Get first 10 runs
-curl "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/ultrasound-grooved-tray?limit=10"
+curl "https://assaychain.com/api/benchmark/ultrasound-grooved-tray?limit=10"
 
 # Filter: placer slurry, recovery > 70%
-curl "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/ultrasound-grooved-tray?feed_type=placer_slurry&min_recovery_pct=70"
+curl "https://assaychain.com/api/benchmark/ultrasound-grooved-tray?feed_type=placer_slurry&min_recovery_pct=70"
 
 # Only attested runs
-curl "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/ultrasound-grooved-tray?attested_only=true&limit=5"
+curl "https://assaychain.com/api/benchmark/ultrasound-grooved-tray?attested_only=true&limit=5"
 ```
 
 ### JavaScript (`x402-fetch`)
@@ -148,7 +148,7 @@ const fetchPaid = wrapFetchWithPayment(fetch, account);
 
 // First call triggers 402; the wrapper auto-settles and retries.
 const res = await fetchPaid(
-  'https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/ultrasound-grooved-tray?limit=5&attested_only=true'
+  'https://assaychain.com/api/benchmark/ultrasound-grooved-tray?limit=5&attested_only=true'
 );
 const data = await res.json();
 console.log(`Got ${data.runs.length} runs`);
@@ -168,7 +168,7 @@ headers = {
 }
 
 response = requests.get(
-    'https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/ultrasound-grooved-tray?limit=5',
+    'https://assaychain.com/api/benchmark/ultrasound-grooved-tray?limit=5',
     headers=headers
 )
 
@@ -189,7 +189,7 @@ Responses are wrapped: `{ ok, data, provenance, meta }`.
 ### JavaScript
 
 ```javascript
-const res = await fetchPaid('https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper');
+const res = await fetchPaid('https://assaychain.com/api/benchmark/copper');
 const body = await res.json();
 const { data, provenance } = body;
 
@@ -206,7 +206,7 @@ console.log(`Verify at: ${provenance.verify_url}`);
 import requests
 
 res = requests.get(
-    'https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper',
+    'https://assaychain.com/api/benchmark/copper',
     headers={'X-PAYMENT': '<base64 x402 payload>'}
 )
 body = res.json()
@@ -324,7 +324,7 @@ print(result_data)
 ```javascript
 class MineralIntelligenceAgent {
   constructor() {
-    this.baseURL = 'https://us-central1-fourmonth-73efe.cloudfunctions.net/api';
+    this.baseURL = 'https://assaychain.com/api';
   }
 
   async getBenchmark(commodity) {
@@ -383,7 +383,7 @@ console.log(`Found ${runs.runs.length} high-recovery runs`);
 ```python
 class MineralIntelligenceAgent:
     def __init__(self):
-        self.base_url = 'https://us-central1-fourmonth-73efe.cloudfunctions.net/api'
+        self.base_url = 'https://assaychain.com/api'
 
     def get_benchmark(self, commodity):
         response = requests.get(

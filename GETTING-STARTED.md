@@ -20,10 +20,8 @@ Step-by-step guide to using the Mineral Intelligence Benchmark API.
 Start here — no setup required, no payment.
 
 ```bash
-curl https://us-central1-fourmonth-73efe.cloudfunctions.net/api/health
+curl https://assaychain.com/api/health
 ```
-
-(The vanity host `https://assaychain.com` also resolves to the same backend.)
 
 You should see:
 
@@ -79,7 +77,7 @@ Claude Desktop spawns stdio MCP servers. To reach our Streamable HTTP endpoint, 
          "args": [
            "-y",
            "mcp-remote",
-           "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp"
+           "https://assaychain.com/api/mcp"
          ]
        }
      }
@@ -94,11 +92,11 @@ Note: MCP itself does **not** carry the x402 `X-PAYMENT` header. Paid tools retu
 
 ```bash
 # Probe — returns 402 with the canonical accepts[] PaymentRequirements
-curl -i https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper
+curl -i https://assaychain.com/api/benchmark/copper
 
 # Paid call — header value is the base64-encoded x402 payload your client builds
 curl -H "X-PAYMENT: <base64 x402 payload>" \
-  https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper
+  https://assaychain.com/api/benchmark/copper
 ```
 
 Use [`x402-fetch`](https://github.com/coinbase/x402) or [`x402-axios`](https://github.com/coinbase/x402) to build the `X-PAYMENT` header. See [x402-GUIDE.md](./x402-GUIDE.md) for details.
@@ -151,7 +149,7 @@ Same $0.10 USDC payment model.
 Get the first 10 runs (unpaid call returns 402 with the accepts[] envelope):
 
 ```bash
-curl -i "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/ultrasound-grooved-tray?limit=10"
+curl -i "https://assaychain.com/api/benchmark/ultrasound-grooved-tray?limit=10"
 ```
 
 ### Filtered query
@@ -159,7 +157,7 @@ curl -i "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/ul
 Placer-slurry runs with ≥70% recovery, attested-only:
 
 ```bash
-curl -i "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/ultrasound-grooved-tray?feed_type=placer_slurry&min_recovery_pct=70&attested_only=true"
+curl -i "https://assaychain.com/api/benchmark/ultrasound-grooved-tray?feed_type=placer_slurry&min_recovery_pct=70&attested_only=true"
 ```
 
 Response:
@@ -236,7 +234,7 @@ Same config as Option A above — use `mcp-remote` to bridge to the Streamable H
       "args": [
         "-y",
         "mcp-remote",
-        "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp"
+        "https://assaychain.com/api/mcp"
       ]
     }
   }
@@ -260,7 +258,7 @@ import { privateKeyToAccount } from 'viem/accounts';
 const account = privateKeyToAccount(process.env.WALLET_PRIVATE_KEY);
 const fetchPaid = wrapFetchWithPayment(fetch, account);
 
-const res = await fetchPaid('https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper');
+const res = await fetchPaid('https://assaychain.com/api/benchmark/copper');
 const json = await res.json();
 console.log(json.data, json.provenance);
 ```

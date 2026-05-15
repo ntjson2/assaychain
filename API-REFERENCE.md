@@ -2,7 +2,7 @@
 
 Complete endpoint documentation for the Mineral Intelligence Benchmark API.
 
-**Base URL:** `https://us-central1-fourmonth-73efe.cloudfunctions.net/api`
+**Base URL:** `https://assaychain.com/api`
 
 All payment-gated endpoints use [x402](https://x402.org) on Base mainnet. Settle with any x402-aware client; the unpaid 402 response carries the exact `accepts[]` `PaymentRequirements` to satisfy.
 
@@ -57,7 +57,7 @@ USGS Mineral Commodity Summaries data.
 **Request:**
 
 ```bash
-curl -i https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper
+curl -i https://assaychain.com/api/benchmark/copper
 ```
 
 **Unpaid (402):** standard x402 envelope — `error`, `accepts[]` (network=`base`, asset=USDC, amount=`0.10`, recipient), `paymentExpired`.
@@ -246,7 +246,7 @@ Requires `X-PAYMENT` header matching the ladder price returned by `/estimate`. U
   "job_id": "ex_2026-05-14-71fa1113",
   "status": "complete",
   "grade": "B",
-  "result_url": "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/extract/result/ex_2026-05-14-71fa1113?token=<hmac>",
+  "result_url": "https://assaychain.com/api/extract/result/ex_2026-05-14-71fa1113?token=<hmac>",
   "result_ttl_hours": 24
 }
 ```
@@ -325,7 +325,7 @@ Standard x402 envelope. Example:
     "maxAmountRequired": "100000",
     "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b3566dA4ef5",
     "payTo": "0x750977976Ab85A4Ce5AAbb2e1a9fc80a633f2769",
-    "resource": "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper",
+    "resource": "https://assaychain.com/api/benchmark/copper",
     "description": "USGS copper benchmark",
     "maxTimeoutSeconds": 60
   }],

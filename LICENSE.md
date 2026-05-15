@@ -31,7 +31,7 @@ Benchmark data is sourced from the U.S. Geological Survey (USGS) Mineral Commodi
 ## Attribution
 
 Mineral Intelligence Benchmark API
-https://assaychain.com (vanity) — https://us-central1-fourmonth-73efe.cloudfunctions.net/api (canonical)
+https://assaychain.com
 
 Provider: Quetzal Collective LLC
 Attestor wallet: inspect any record on [base.easscan.org](https://base.easscan.org), or read the `verify_url` field returned by every paid response.

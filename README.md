@@ -2,8 +2,7 @@
 
 **Attested USGS critical-mineral benchmarks + first-party gravity-separation run logs, served over x402 with on-chain provenance.**
 
-- **Live endpoint:** `https://us-central1-fourmonth-73efe.cloudfunctions.net/api`
-- **Vanity host:** `https://assaychain.com` (also `.net`) — Firebase Hosting front-end
+- **Live endpoint:** `https://assaychain.com/api` (also resolves on `.net`)
 - **Payment model:** [x402](https://x402.org) — USDC on Base mainnet
 - **Provenance:** every paid response carries an IPFS CID + EAS attestation UID
 - **Schemas:** `mineral-intel-benchmark-v1` and `mineral-intel-ultrasound-run-v1` are registered on Base and locked (new fields → v2)
@@ -16,10 +15,10 @@
 
 ```bash
 # Service health + endpoint inventory
-curl https://us-central1-fourmonth-73efe.cloudfunctions.net/api/health
+curl https://assaychain.com/api/health
 
 # MCP tools/list (no payment)
-curl -X POST https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp \
+curl -X POST https://assaychain.com/api/mcp \
   -H "Content-Type: application/json" \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}'
 ```
@@ -27,7 +26,7 @@ curl -X POST https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp \
 ### Gated probe (returns 402)
 
 ```bash
-curl -i https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper
+curl -i https://assaychain.com/api/benchmark/copper
 ```
 
 Response: `402 Payment Required` with `accepts[]` listing exact x402 `PaymentRequirements` (network, asset, amount, recipient).
@@ -128,7 +127,7 @@ The server speaks Streamable HTTP at `POST /api/mcp`. For hosts that only spawn 
       "args": [
         "-y",
         "mcp-remote",
-        "https://us-central1-fourmonth-73efe.cloudfunctions.net/api/mcp"
+        "https://assaychain.com/api/mcp"
       ]
     }
   }
@@ -137,7 +136,7 @@ The server speaks Streamable HTTP at `POST /api/mcp`. For hosts that only spawn 
 
 ### Direct HTTP
 
-Base URL: `https://us-central1-fourmonth-73efe.cloudfunctions.net/api`
+Base URL: `https://assaychain.com/api`
 
 All responses are JSON. See [API-REFERENCE.md](./API-REFERENCE.md).
 

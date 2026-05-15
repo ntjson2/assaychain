@@ -20,7 +20,7 @@ Every response from the API includes an **attestation UID**. This means:
 ### Step 1: Get the UID from a response
 
 ```bash
-curl https://us-central1-fourmonth-73efe.cloudfunctions.net/api/benchmark/copper \
+curl https://assaychain.com/api/benchmark/copper \
   -H "X-PAYMENT: <your-signature>"
 ```
 
